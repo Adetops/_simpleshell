@@ -12,6 +12,7 @@ int main(__attribute__((unused)) int ac, char **av)
 	while (av[i])
 	{
 		printf("%s\n", av[i]);
+		i++;
 	}
 	return (0);
 }
