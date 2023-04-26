@@ -70,7 +70,7 @@ int _unsetenv(info_t *info)
 
 /**
  * populateEnvList - populates linked list environs
- * @inf: Structure that contains potential args. Used to 
+ * @inf: Structure that contains potential args. Used to
  * maintain constant func prototype.
  * Return: always 0
  */
