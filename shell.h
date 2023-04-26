@@ -174,4 +174,55 @@ int _exit(info_t *);
 int chDir(info_t *);
 int _help(info_t *);
 
-int
+int _history(info_t *);
+int _alias(info_t *);
+
+/* my getline functions */
+ssize_t get_input(info_t *);
+int _getline(info_t *, char **, size_t *);
+void signalHandler(int);
+
+/* get info func */
+void clrInfo(info_t *);
+void setInfo(info_t *, char **);
+void freeInfo(info_t *, int);
+
+/* var chain */
+int _ischain(info_t *, char *, size_t *);
+void _checkchain(info_t *, char *, size_t *, size_t, size_t);
+int _aliasreplace(info_t *);
+int _varreplace(info_t *);
+int _strreplace(char **, char *);
+
+/* funct used to get environ var */
+char *_getenv(info_t *, const char *);
+int _env(info_t *);
+int _setenv(info_t *);
+int _unsetenv(info_t *);
+int populateEnvList(info_t *);
+
+char **getEnviron(info_t *);
+int unsetEnv(info_t *, char *);
+int setEnv(info_t *, char *, char *);
+
+/* history func */
+char *getHistFile(info_t *inf);
+int writeHist(info_t *inf);
+int readHist(info_t *inf);
+int buildHistList(info_t *inf, char *buff, int count);
+int reNumbHist(info_t *info);
+
+/* func for list.c */
+list_t *addNode(list_t **, const char *, int);
+list_t *appendNode(list_t **, const char *, int);
+size_t printList(const list_t *);
+int delNode(list_t **, unsigned int);
+void free_list(list_t **);
+
+size_t listLen(const list_t *);
+char **listStr(list_t *);
+size_t prList(const list_t *);
+list_t *nodeSTratsWith(list_t *, char *, char);
+ssize_t getNode(list_t *, list_t *);
+
+#endif /* SHELL_H */
