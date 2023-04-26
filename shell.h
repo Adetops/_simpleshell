@@ -215,14 +215,14 @@ int reNumbHist(info_t *info);
 /* func for list.c */
 list_t *addNode(list_t **, const char *, int);
 list_t *appendNode(list_t **, const char *, int);
-size_t printList(const list_t *);
+/* size_t printList(const list_t *); */
 int delNode(list_t **, unsigned int);
 void free_list(list_t **);
 
 size_t listLen(const list_t *);
 char **listStr(list_t *);
 size_t prList(const list_t *);
-list_t *nodeSTratsWith(list_t *, char *, char);
+list_t *nodeStartsWith(list_t *, char *, char);
 ssize_t getNode(list_t *, list_t *);
 
 #endif /* SHELL_H */
