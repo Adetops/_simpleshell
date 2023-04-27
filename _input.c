@@ -43,18 +43,18 @@ int _putchr(char c)
 /**
  * _putfileD - writes the character c to given file Descriptor
  * @c: the character to write
- * @fd: The file descriptor to write to
+ * @fileD: The file descriptor to write to
  * Return: 1 if success
  * if error, -1 is returned and eerno is set appropriately
  */
-int _putfileD(char c, int fd)
+int _putfileD(char c, int fileD)
 {
 	static int i;
 	static char buff[WR_BUFF_SIZE];
 
 	if (c == BUFF_FLUSH || i == WR_BUFF_SIZE)
 	{
-		write(fd, buff, i);
+		write(fileD, buff, i);
 		i = 0;
 	}
 	if (c != BUFF_FLUSH)
@@ -65,10 +65,10 @@ int _putfileD(char c, int fd)
 /**
  * _putsfileD - prints an input sprint
  * @str: the string to print
- * @fd: the file descriptor to write to
+ * @fileD: the file descriptor to write to
  * Return: the number of char input
  */
-int _putsfileD(char *str, int fd)
+int _putsfileD(char *str, int fileD)
 {
 	int i = 0;
 
@@ -76,7 +76,7 @@ int _putsfileD(char *str, int fd)
 		return (0);
 	while (*str)
 	{
-		i += _putfileD(*str++, fd);
+		i += _putfileD(*str++, fileD);
 	}
 	return (i);
 }
