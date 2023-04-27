@@ -75,7 +75,7 @@ ssize_t get_input(info_t *info)
 		if (i >= len) /* reached end of buff? */
 		{
 			i = len = 0; /* reset position and length */
-			info->cmd_buf_type = CMD_NORM;
+			info->cmd_buff_type = CMD_NORM;
 		}
 		*buff_p = ptr; /* pass ptr back to current cmd position */
 		return (_strlen(ptr)); /* return length of current cmd */
@@ -119,7 +119,7 @@ int _getline(info_t *info, char **ptr, size_t *len)
 	char *p = NULL, *new_p = NULL;
 	char *c;
 
-	ip = *ptr;
+	p = *ptr;
 	if (p && len)
 		str = *len;
 	if (i == length)
@@ -155,7 +155,7 @@ int _getline(info_t *info, char **ptr, size_t *len)
  */
 void signalHandler(__attribute__((unused))int sigNum)
 {
-	_put("\n");
-	_put("$ ");
+	_puts("\n");
+	_puts("$ ");
 	_putchr(BUFF_FLUSH);
 }

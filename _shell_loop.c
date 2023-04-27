@@ -15,7 +15,7 @@ int hsh(info_t *info, char **arv)
 	{
 		clrInfo(info);
 		if (interactive(info))
-			_put("$ ");
+			_puts("$ ");
 		_putchr(BUFF_FLUSH);
 		r = get_input(info);
 		if (r != -1)
@@ -35,7 +35,7 @@ int hsh(info_t *info, char **arv)
 		exit(info->status);
 	if (builtinRet == -2)
 	{
-		if (info->err_num == -1)
+		if (info->err_numb == -1)
 			exit(info->status);
 		exit(info->err_numb);
 	}
@@ -54,7 +54,7 @@ int findBuiltin(info_t *info)
 {
 	int i, builtinRet = -1;
 	builtin_tab builtinlb[] = {
-		{"exit", _exit},
+		{"exit", _exits},
 		{"env", _env},
 		{"help", _help},
 		{"history", _history},
@@ -68,8 +68,8 @@ int findBuiltin(info_t *info)
 	for (i = 0; builtinlb[i].type; i++)
 		if (_strcmp(info->argv[0], builtinlb[i].type) == 0)
 		{
-			info->line_count++;
-			builtinRet = builtinlb[i].fun(info);
+			info->err_count++;
+			builtinRet = builtinlb[i].func(info);
 			break;
 		}
 	return (builtinRet);
@@ -89,10 +89,10 @@ void findCmd(info_t *info)
 	info->path = info->argv[0];
 	if (info->linecount_flag == 1)
 	{
-		info->line_count++;
+		info->err_count++;
 		info->linecount_flag = 0;
 	}
-	for (i = 0; k = 0; info->arg[i]; i++)
+	for (i = 0, k = 0; info->arg[i]; i++)
 		if (!_delim(info->arg[i], " \t\n"))
 			k++;
 	if (!k)
@@ -151,7 +151,7 @@ void forkCmd(info_t *info)
 		{
 			info->status = WEXITSTATUS(info->status);
 			if (info->status == 126)
-				print_error(info, "Permission denied\n");
+				print_err(info, "Permission denied\n");
 		}
 	}
 }

@@ -47,7 +47,7 @@ int aliasSet(info_t *inf, char *str)
 	ptr = _strchr(str, '=');
 	if (!ptr)
 		return (1);
-	if (!*++p)
+	if (!*++ptr)
 		return (aliasUnset(inf, str));
 	aliasUnset(inf, str);
 	return (appendNode(&(inf->alias), str, 0) == NULL);
@@ -68,8 +68,8 @@ int aliasPrint(list_t *node)
 		for (a = node->str; a <= ptr; a++)
 			_putchr(*a);
 		_putchr('\'');
-		_put(ptr + 1);
-		_put("'\n");
+		_puts(ptr + 1);
+		_puts("'\n");
 		return (0);
 	}
 	return (1);

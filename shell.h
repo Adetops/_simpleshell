@@ -21,7 +21,7 @@
 #define CHAIN	3
 #define AND	2
 #define OR	1
-#define NORM	0
+#define CMD_NORM	0
 
 /* convert_num() */
 #define CONVERT_LWCASE	1
@@ -170,7 +170,7 @@ char *convert_numb(long int, int, int);
 void rem_comments(char *);
 
 /* builtin funcs */
-int _exit(info_t *);
+int _exits(info_t *);
 int chDir(info_t *);
 int _help(info_t *);
 

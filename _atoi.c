@@ -44,7 +44,7 @@ int _isalpha(int c)
  * @s: the str to convert
  * Return: generated int if success, 0 otherwise
  */
-int _atoi(char *s);
+int _atoi(char *s)
 {
 	int i, sign = 1;
 	int output, flag = 0;
@@ -58,17 +58,17 @@ int _atoi(char *s);
 		if (s[i] >= '0' && s[i] <= '9')
 		{
 			flag = 1;
-			result *= 10;
-			result += (s[i] - '0');
+			res *= 10;
+			res += (s[i] - '0');
 		}
 		else if (flag == 1)
 			flag = 2;
 		i++;
 	}
 	if (sign == -1)
-		output = -result;
+		output = -res;
 	else
-		output = result;
+		output = res;
 
 	return (output);
 }

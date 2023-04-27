@@ -37,7 +37,7 @@ void print_err(info_t *inf, char *errstr)
 {
 	_input(inf->fName);
 	_input(": ");
-	printD(inf->line_count, STDERR_FILENO);
+	printD(inf->err_count, STDERR_FILENO);
 	_input(": ");
 	_input(inf->argv[0]);
 	_input(": ");
@@ -54,10 +54,10 @@ int printD(int num, int fileD)
 {
 	int count = 0, i;
 	unsigned int current, _abs_;
-	int (*_putchr)(char) = _putchar;
+	int (*__putchr)(char) = _putchr;
 
 	if (fileD == STDERR_FILENO)
-		_putchar = _putchr;
+		_putchr = __putchr;
 	if (num < 0)
 	{
 		_abs_ = -num;
@@ -102,7 +102,7 @@ char *convert_numb(long int numb, int base, int flag)
 		n = -numb;
 		sign = '-';
 	}
-	array = flag & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+	array = flag & CONVERT_LWCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
 
@@ -119,7 +119,7 @@ char *convert_numb(long int numb, int base, int flag)
 /**
  * rem_comments - function replaces first instance of '#' with '\0'
  * @buff: address of the string to modify
- * ReturnL always 0
+ * Return: always 0
  */
 void rem_comments(char *buff)
 {

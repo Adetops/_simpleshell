@@ -38,7 +38,7 @@ int main(int ac, char **av)
 		info->readfileD = fileD;
 	}
 	populateEnvList(info);
-	readHistry(info);
+	readHist(info);
 	hsh(info, av);
 	return (EXIT_SUCCESS);
 }

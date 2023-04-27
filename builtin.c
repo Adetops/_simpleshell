@@ -1,13 +1,13 @@
 #include "shell.h"
 
 /**
- * _exit - exits the shell
+ * _exits - exits the shell
  * @inf: structure that contains potential args,
  * used to maintain constant func prototype
  * Return: exits with a given exit status
  * (0) if info.argv[0] != "exit"
  */
-int _exit(info_t *inf)
+int _exits(info_t *inf)
 {
 	int exitCheck;
 
@@ -17,7 +17,7 @@ int _exit(info_t *inf)
 		if (exitCheck == -1)
 		{
 			inf->status = 2;
-			print_err(info, "Number out of coverage: ");
+			print_err(inf, "Number out of coverage: ");
 			_input(inf->argv[1]);
 			_putchr('\n');
 			return (1);
@@ -41,7 +41,7 @@ int chDir(info_t *inf)
 
 	s = getcwd(buffer, 1024);
 	if (!s)
-		_put("TODO: >>getcwd failure emsg here<<\n");
+		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!inf->argv[1])
 	{
 		dir = _getenv(inf, "HOME=");
@@ -72,8 +72,8 @@ int chDir(info_t *inf)
 	}
 	else
 	{
-		_setenv(inf, "OLDPWD", _getenv(inf, "PWD="));
-		_setenv(inf, "PWD", getcwd(buffer, 1024));
+		setEnv(inf, "OLDPWD", _getenv(inf, "PWD="));
+		setEnv(inf, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
 }
@@ -88,9 +88,9 @@ int _help(info_t *inf)
 	char **arg_arr;
 
 	arg_arr = inf->argv;
-	_put("help func called: function not yet implemented \n");
+	_puts("help func called: function not yet implemented \n");
 	if (0)
-		_put(*arg_arr);
+		_puts(*arg_arr);
 
 	return (0);
 }
