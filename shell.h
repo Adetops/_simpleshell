@@ -217,7 +217,7 @@ list_t *addNode(list_t **, const char *, int);
 list_t *appendNode(list_t **, const char *, int);
 /* size_t printList(const list_t *); */
 int delNode(list_t **, unsigned int);
-void free_list(list_t **);
+void freeList(list_t **);
 
 size_t listLen(const list_t *);
 char **listStr(list_t *);
