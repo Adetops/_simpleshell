@@ -54,14 +54,14 @@ int printD(int num, int fileD)
 {
 	int count = 0, i;
 	unsigned int current, _abs_;
-	int (*__putchr)(char) = _putchr;
+	int (*__putchar)(char) = _putchar;
 
 	if (fileD == STDERR_FILENO)
-		_putchr = __putchr;
+		__putchar = _putchr;
 	if (num < 0)
 	{
 		_abs_ = -num;
-		_putchr('-');
+		__putchar('-');
 		count++;
 	}
 	else
@@ -71,12 +71,12 @@ int printD(int num, int fileD)
 	{
 		if (_abs_ / i)
 		{
-			_putchr('0' + current / i);
+			__putchar('0' + current / i);
 			count++;
 		}
 		current %= i;
 	}
-	_putchr(current + '0');
+	__putchar(current + '0');
 	count++;
 
 	return (count);

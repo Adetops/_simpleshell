@@ -55,11 +55,11 @@ int chDir(info_t *inf)
 	{
 		if (!_getenv(inf, "OLDPWD="))
 		{
-			_put(s);
+			_puts(s);
 			_putchr('\n');
 			return (1);
 		}
-		_put(_getenv(inf, "OLDPWD=")), _putchr('\n');
+		_puts(_getenv(inf, "OLDPWD=")), _putchr('\n');
 		ret = /* TODO: what should this be? */
 			chdir((dir = _getenv(inf, "OLDPWD=")) ? dir : "/");
 	}

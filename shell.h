@@ -137,7 +137,7 @@ char *_strcat(char *, char *);
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
-/* int _putchr(char c); */
+int _putchar(char c);
 
 /* exit functions */
 char *_strncpy(char *, char *, int);
