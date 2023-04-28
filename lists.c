@@ -76,7 +76,7 @@ list_t *appendNode(list_t **head, const char *str, int num)
  * @head: pointer to the first node
  * Return: list size
  */
-size_t prList(const list_t *head)
+size_t printList(const list_t *head)
 {
 	size_t i = 0;
 

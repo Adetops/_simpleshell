@@ -7,7 +7,7 @@
  */
 int _env(info_t *inf)
 {
-	prList(inf->env);
+	printList(inf->env);
 	return (0);
 }
 

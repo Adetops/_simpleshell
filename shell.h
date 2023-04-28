@@ -215,7 +215,7 @@ int reNumbHist(info_t *info);
 /* func for list.c */
 list_t *addNode(list_t **, const char *, int);
 list_t *appendNode(list_t **, const char *, int);
-/* size_t printList(const list_t *); */
+size_t printList(const list_t *);
 int delNode(list_t **, unsigned int);
 void freeList(list_t **);
 
