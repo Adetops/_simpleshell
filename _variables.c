@@ -112,3 +112,35 @@ int _ischain(info_t *info, char *buff, size_t *ptr)
 	*ptr = j;
 	return (1);
 }
+
+/**
+ * _checkchain - checks if chaining should continue based on last status
+ * @info: the parameter struct
+ * @buff: the char buffer
+ * @ptr: address of current position in buff
+ * @i: starting position in buff
+ * @len: length of buffer
+ * Return: nothing
+ */
+void _checkchain(info_t *info, char *buff, size_t *ptr, size_t i, size_t len)
+{
+	size_t j = *ptr;
+
+	if (info->cmd_buff_type == CMD_AND)
+	{
+		if (info->status)
+		{
+			buff[i] = 0;
+			j = len;
+		}
+	}
+	if (info->cmd_buff_type == CMD_OR)
+	{
+		if (!info->status)
+		{
+			buff[i] = 0;
+			j = len;
+		}
+	}
+	*ptr = j;
+}
