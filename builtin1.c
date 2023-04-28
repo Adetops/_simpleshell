@@ -66,8 +66,8 @@ int aliasPrint(list_t *node)
 	{
 		ptr = _strchr(node->string, '=');
 		for (a = node->string; a <= ptr; a++)
-			_putchr(*a);
-		_putchr('\'');
+			_putchar(*a);
+		_putchar('\'');
 		_puts(ptr + 1);
 		_puts("'\n");
 		return (0);

@@ -72,7 +72,7 @@ list_t *appendNode(list_t **head, const char *str, int num)
 }
 
 /**
- * prList - prints only the str element of a list_t linked list
+ * printList - prints only the str element of a list_t linked list
  * @head: pointer to the first node
  * Return: list size
  */

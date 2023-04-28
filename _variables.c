@@ -59,7 +59,7 @@ int _aliasreplace(info_t *info)
 		if (!ptr)
 			return (0);
 		ptr = _strdup(ptr + 1);
-		if(!ptr)
+		if (!ptr)
 			return (0);
 		info->argv[0] = ptr;
 	}

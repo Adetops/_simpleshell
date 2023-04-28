@@ -8,7 +8,7 @@
  */
 char **strtow2(char *str, char delim)
 {
-	int i, j, k , m, numWords = 0;
+	int i, j, k, m, numWords = 0;
 	char **s;
 
 	if (str == NULL || str[0] == 0)
