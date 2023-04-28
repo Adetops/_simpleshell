@@ -55,7 +55,7 @@ ssize_t get_input(info_t *info)
 	ssize_t r = 0;
 	char **buff_p = &(info->arg), *ptr;
 
-	_putchr(BUFF_FLUSH);
+	_putchar(BUFF_FLUSH);
 	r = input_buff(info, &buff, &len);
 	if (r == -1) /* EOF */
 		return (-1);
@@ -157,5 +157,5 @@ void signalHandler(__attribute__((unused))int sigNum)
 {
 	_puts("\n");
 	_puts("$ ");
-	_putchr(BUFF_FLUSH);
+	_putchar(BUFF_FLUSH);
 }
