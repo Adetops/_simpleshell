@@ -18,9 +18,9 @@
 #define BUFF_FLUSH -1
 
 /* for chaining commands */
-#define CHAIN	3
-#define AND	2
-#define OR	1
+#define CMD_CHAIN	3
+#define CMD_AND	2
+#define CMD_OR	1
 #define CMD_NORM	0
 
 /* convert_num() */
