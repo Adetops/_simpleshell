@@ -63,3 +63,18 @@ char *_strchr(char *s, char c)
 		s++;
 	}
 }
+
+/**
+ * _strlen - returns the length of a string
+ * @str: string
+ * Return: length
+ */
+int _strlen(char *str)
+{
+	int count, inc;
+
+	inc = 0;
+	for (count = 0; str[count] != '\0'; count++)
+		inc++;
+	return (inc);
+}
