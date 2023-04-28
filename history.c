@@ -38,7 +38,7 @@ int writeHist(info_t *info)
 
 	fileD = open(fName, O_CREAT | O_TRUNC | O_RDWR, 0644);
 	free(fName);
-	if (fd == -1)
+	if (fileD == -1)
 		return (-1);
 	for (node = info->hist; node; node = node->next)
 	{
@@ -58,18 +58,18 @@ int writeHist(info_t *info)
 int readHist(info_t *inf)
 {
 	int i = 0, count = 0, last = 0;
-	char *buff = NULL, *fName = getHistFile(info);
+	char *buff = NULL, *fName = getHistFile(inf);
 	ssize_t fileD, rdLen, fSize = 0;
 	struct stat str;
 
 	if (!fName)
 		return (0);
-	fileD = open(fName, o_RDONLY);
-	free(filename);
+	fileD = open(fName, O_RDONLY);
+	free(fName);
 	if (fileD == -1)
 		return (0);
 	if (!fstat(fileD, &str))
-		fSize = str.str_size;
+		fSize = str.st_size;
 	if (fSize < 2)
 		return (0);
 	buff = malloc(sizeof(char) * (fSize + 1));
@@ -85,18 +85,18 @@ int readHist(info_t *inf)
 		if (buff[i] == '\n')
 		{
 			buff[i] = 0;
-			buildHistList(info, buff + last, count++);
+			buildHistList(inf, buff + last, count++);
 			last = i + 1;
 		} i++;
 	}
 	if (last != i)
-		buildHistList(info, buff + last, count++);
+		buildHistList(inf, buff + last, count++);
 	free(buff);
-	info->histCount = count;
-	while (info->histCount-- >= HIST_MAX)
-		delNode(&(info->hist), 0);
-	reNumbHist(info);
-	return (info->histCount);
+	inf->histCount = count;
+	while (inf->histCount-- >= HIST_MAX)
+		delNode(&(inf->hist), 0);
+	reNumbHist(inf);
+	return (inf->histCount);
 }
 
 /**
@@ -125,7 +125,7 @@ int buildHistList(info_t *info, char *buff, int count)
  */
 int reNumbHist(info_t *inf)
 {
-	list_t *node = info->hist;
+	list_t *node = inf->hist;
 	int i = 0;
 
 	while (node)
@@ -133,5 +133,5 @@ int reNumbHist(info_t *inf)
 		node->numb = i++;
 		node = node->next;
 	}
-	return (info->histCount = i);
+	return (inf->histCount = i);
 }

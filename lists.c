@@ -20,8 +20,8 @@ list_t *addNode(list_t **head, const char *str, int num)
 	newHead->numb = num;
 	if (str)
 	{
-		newHead->str = _strdup(str);
-		if (!newHead->str)
+		newHead->string = _strdup(str);
+		if (!newHead->string)
 		{
 			free(newHead);
 			return (NULL);
@@ -82,7 +82,7 @@ size_t prList(const list_t *head)
 
 	while (head)
 	{
-		_puts(head->string ? h->string : "(nil)");
+		_puts(head->string ? head->string : "(nil)");
 		_puts("\n");
 		head = head->next;
 		i++;
