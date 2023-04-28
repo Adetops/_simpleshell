@@ -206,11 +206,11 @@ int unsetEnv(info_t *, char *);
 int setEnv(info_t *, char *, char *);
 
 /* history func */
-char *getHistFile(info_t *inf);
-int writeHist(info_t *inf);
-int readHist(info_t *inf);
-int buildHistList(info_t *inf, char *buff, int count);
-int reNumbHist(info_t *info);
+char *getHistFile(info_t *);
+int writeHist(info_t *);
+int readHist(info_t *);
+int buildHistList(info_t *, char *, int);
+int reNumbHist(info_t *);
 
 /* func for list.c */
 list_t *addNode(list_t **, const char *, int);

@@ -9,13 +9,26 @@
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int i;
+	int i, j;
+	char *s = dest;
 
-	for (i = 0; i < n && src[i] != '\0'; i++)
+	i = 0;
+	while (src[i] != '\0' && i < n - 1)
+	{
 		dest[i] = src[i];
-	for ( ; i < n; i++)
-		dest[i] = '\0';
-	return (dest);
+		i++;
+	}
+	if (i < n)
+	{
+		j = i;
+		while (j < n)
+		{
+			dest[j] = '\0';
+			j++;
+		}
+	}
+	return (s);
+
 }
 
 /**
@@ -29,20 +42,21 @@ char *_strncpy(char *dest, char *src, int n)
 char *_strncat(char *dest, char *src, int n)
 {
 	int count = 0, count1 = 0;
+	char *s = dest;
 
-	while (*(dest + count) != '\0')
+	while (dest[count] != '\0')
 	{
 		count++;
 	}
-	while (count1 < n)
+	while (src[count1] != '\0' && count1 < n)
 	{
-		*(dest + count) = *(src + count1);
-		if (*(src + count) == '\0')
-			break;
+		dest[count] = src[count1];
 		count++;
 		count1++;
 	}
-	return (dest);
+	if (count1 < n)
+		dest[count] = '\0';
+	return (s);
 }
 
 /**
@@ -54,27 +68,27 @@ char *_strncat(char *dest, char *src, int n)
  */
 char *_strchr(char *s, char c)
 {
-	while (1)
-	{
+	do {
 		if (*s == c)
 			return (s);
-		if (*s == 0)
-			return (0);
-		s++;
-	}
+	} while (*s++ != '\0');
+
+	return (NULL);
 }
 
 /**
  * _strlen - returns the length of a string
- * @str: string
+ * @str: string to check
  * Return: length
  */
 int _strlen(char *str)
 {
-	int count, inc;
+	int i = 0;
 
-	inc = 0;
-	for (count = 0; str[count] != '\0'; count++)
-		inc++;
-	return (inc);
+	if (!str)
+		return (0);
+
+	while (*str++)
+		i++;
+	return (i);
 }
